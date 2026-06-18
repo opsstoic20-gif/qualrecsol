@@ -71,11 +71,16 @@ export default function HomeView() {
   // ---- Hero (cinematic gradient, no stock video) ----
   function Hero() {
     return el("section", { style: { position: "relative", background: "var(--brand-ink)", overflow: "hidden" } },
-      el("div", { "aria-hidden": "true", style: { position: "absolute", inset: 0, zIndex: 0, background: "var(--gradient-brand)", opacity: 0.96 } }),
-      el("div", { className: "qr-aurora-a", "aria-hidden": "true", style: { position: "absolute", top: "-35%", left: "-15%", width: "70%", height: "170%", background: "radial-gradient(circle at center, rgba(59,130,246,0.55), transparent 60%)", filter: "blur(50px)", zIndex: 1, pointerEvents: "none" } }),
-      el("div", { className: "qr-aurora-b", "aria-hidden": "true", style: { position: "absolute", bottom: "-45%", right: "-12%", width: "62%", height: "160%", background: "radial-gradient(circle at center, rgba(14,116,144,0.5), transparent 60%)", filter: "blur(60px)", zIndex: 1, pointerEvents: "none" } }),
-      el("div", { className: "qr-grid", "aria-hidden": "true", style: { position: "absolute", inset: 0, zIndex: 1, backgroundImage: "linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)", backgroundSize: "64px 64px", maskImage: "radial-gradient(circle at 75% 5%, #000, transparent 72%)", WebkitMaskImage: "radial-gradient(circle at 75% 5%, #000, transparent 72%)", pointerEvents: "none" } }),
-      el("div", { "aria-hidden": "true", style: { position: "absolute", inset: 0, zIndex: 1, background: "linear-gradient(115deg, rgba(7,18,48,0.78) 0%, rgba(7,18,48,0.30) 58%, rgba(7,18,48,0.12) 100%), linear-gradient(180deg, transparent 60%, rgba(7,18,48,0.55) 100%)", pointerEvents: "none" } }),
+      // Background video (decorative). Falls back to the brand-ink base if it can't load.
+      el("video", { autoPlay: true, muted: true, loop: true, playsInline: true, preload: "auto", "aria-hidden": "true", style: { position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", zIndex: 0 } },
+        el("source", { src: "/hero-bg.mp4", type: "video/mp4" })),
+      // Brand wash over the video — keeps it on-brand and text legible.
+      el("div", { "aria-hidden": "true", style: { position: "absolute", inset: 0, zIndex: 1, background: "var(--gradient-brand)", opacity: 0.5, pointerEvents: "none" } }),
+      // Legibility gradient (darker top-left where the copy sits).
+      el("div", { "aria-hidden": "true", style: { position: "absolute", inset: 0, zIndex: 1, background: "linear-gradient(115deg, rgba(7,18,48,0.74) 0%, rgba(7,18,48,0.34) 55%, rgba(7,18,48,0.16) 100%)", pointerEvents: "none" } }),
+      el("div", { className: "qr-grid", "aria-hidden": "true", style: { position: "absolute", inset: 0, zIndex: 1, backgroundImage: "linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)", backgroundSize: "64px 64px", maskImage: "radial-gradient(circle at 75% 5%, #000, transparent 72%)", WebkitMaskImage: "radial-gradient(circle at 75% 5%, #000, transparent 72%)", pointerEvents: "none", opacity: 0.5 } }),
+      // Fade the bottom edge to white so the hero melts into the page.
+      el("div", { "aria-hidden": "true", style: { position: "absolute", left: 0, right: 0, bottom: 0, height: "32%", zIndex: 1, background: "linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 45%, #FFFFFF 100%)", pointerEvents: "none" } }),
       el("div", { className: "qr-hero-pad", style: { maxWidth: "var(--container-max)", margin: "0 auto", padding: "118px 24px 140px", position: "relative", zIndex: 2 } },
         el("div", { style: { maxWidth: "760px" } },
           el("div", { className: "qr-rise", style: { animationDelay: "0ms" } }, el(QR.Eyebrow, { tone: "onDark" }, "IT Talent & Solutions")),
