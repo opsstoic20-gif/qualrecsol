@@ -7,6 +7,8 @@ import { QR } from "@/components/ui";
 import { Reveal } from "@/components/ui/Reveal";
 import { Icons as I } from "@/components/icons";
 import { ROUTES } from "@/lib/nav";
+import Globe from "@/components/globe/Globe";
+import VendorWall from "@/components/sections/VendorWall";
 
 const el = React.createElement;
 const Head = QR.SectionHead;
@@ -72,13 +74,11 @@ export default function HomeView() {
   function Hero() {
     return el("section", { style: { position: "relative", background: "var(--brand-ink)", overflow: "hidden" } },
       // Background video (decorative). Falls back to the brand-ink base if it can't load.
-      el("video", { autoPlay: true, muted: true, loop: true, playsInline: true, preload: "auto", "aria-hidden": "true", style: { position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", zIndex: 0 } },
+      el("video", { autoPlay: true, muted: true, loop: true, playsInline: true, preload: "auto", "aria-hidden": "true", style: { position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", zIndex: 0, opacity: 0.2 } },
         el("source", { src: "/hero-bg.mp4", type: "video/mp4" })),
-      // Brand wash over the video — keeps it on-brand and text legible.
-      el("div", { "aria-hidden": "true", style: { position: "absolute", inset: 0, zIndex: 1, background: "var(--gradient-brand)", opacity: 0.5, pointerEvents: "none" } }),
-      // Legibility gradient (darker top-left where the copy sits).
-      el("div", { "aria-hidden": "true", style: { position: "absolute", inset: 0, zIndex: 1, background: "linear-gradient(115deg, rgba(7,18,48,0.74) 0%, rgba(7,18,48,0.34) 55%, rgba(7,18,48,0.16) 100%)", pointerEvents: "none" } }),
-      el("div", { className: "qr-grid", "aria-hidden": "true", style: { position: "absolute", inset: 0, zIndex: 1, backgroundImage: "linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)", backgroundSize: "64px 64px", maskImage: "radial-gradient(circle at 75% 5%, #000, transparent 72%)", WebkitMaskImage: "radial-gradient(circle at 75% 5%, #000, transparent 72%)", pointerEvents: "none", opacity: 0.5 } }),
+      // Matte legibility veil (flat, low-sheen — keeps copy crisp over the dim video).
+      el("div", { "aria-hidden": "true", style: { position: "absolute", inset: 0, zIndex: 1, background: "linear-gradient(110deg, rgba(10,21,40,0.82) 0%, rgba(10,21,40,0.55) 60%, rgba(10,21,40,0.42) 100%)", pointerEvents: "none" } }),
+      el("div", { className: "qr-grid", "aria-hidden": "true", style: { position: "absolute", inset: 0, zIndex: 1, backgroundImage: "linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px)", backgroundSize: "64px 64px", maskImage: "radial-gradient(circle at 78% 8%, #000, transparent 70%)", WebkitMaskImage: "radial-gradient(circle at 78% 8%, #000, transparent 70%)", pointerEvents: "none", opacity: 0.45 } }),
       // Fade the bottom edge to white so the hero melts into the page.
       el("div", { "aria-hidden": "true", style: { position: "absolute", left: 0, right: 0, bottom: 0, height: "32%", zIndex: 1, background: "linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 45%, #FFFFFF 100%)", pointerEvents: "none" } }),
       el("div", { className: "qr-hero-pad", style: { maxWidth: "var(--container-max)", margin: "0 auto", padding: "118px 24px 140px", position: "relative", zIndex: 2 } },
@@ -276,6 +276,25 @@ export default function HomeView() {
         el("div", { style: { marginTop: "44px" } }, FAQS.map(([q, a], i) => el(Reveal, { key: i, delay: 20 }, el(FaqRow, { q, a }))))));
   }
 
+  function GlobalNetwork() {
+    return el("section", { style: { background: "var(--surface-2)", padding: "var(--section-py) 0", position: "relative", overflow: "hidden" } },
+      el("div", { className: "qr-dots-ink", "aria-hidden": "true", style: { position: "absolute", inset: 0, opacity: 0.7, pointerEvents: "none" } }),
+      el("div", { style: { maxWidth: "var(--container-max)", margin: "0 auto", padding: "0 24px", position: "relative", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "56px", alignItems: "center" }, className: "qr-why-grid" },
+        el("div", null,
+          el(Reveal, null, el(QR.Eyebrow, null, "Global Workforce")),
+          el(Reveal, { delay: 60, as: "h2", style: { marginTop: "14px" } }, "Hire anywhere. We handle the rest."),
+          el(Reveal, { delay: 120, as: "p", style: { marginTop: "16px", fontSize: "var(--fs-lead)", color: "var(--body)", lineHeight: 1.55 } }, "We source and place vetted talent across borders — and as your employer of record we own payroll, benefits, and compliance in-country. India and Mexico are hire-ready today, with four more markets opening through 2026."),
+          el("div", { style: { marginTop: "28px", display: "flex", gap: "36px", flexWrap: "wrap" } },
+            [["2", "Countries hire-ready"], ["4", "Markets opening 2026"], ["48h", "To a compliant offer"]].map(([n, l], i) =>
+              el(Reveal, { key: i, delay: 60 * i },
+                el("div", { style: { fontFamily: "var(--font-display)", fontWeight: 800, fontSize: "32px", color: "var(--brand)", lineHeight: 1, letterSpacing: "-0.02em" } }, n),
+                el("div", { style: { marginTop: "6px", fontSize: "13px", color: "var(--muted)" } }, l)))),
+          el(Reveal, { delay: 160, style: { marginTop: "32px", display: "flex", gap: "12px", flexWrap: "wrap" } },
+            el(QR.Button, { variant: "primary", onClick: () => onNavigate("global"), iconRight: el(I.ArrowRight, { size: 16 }) }, "Explore Global Workforce"),
+            el(QR.Button, { variant: "secondary", onClick: () => onNavigate("contact") }, "Talk to an expert"))),
+        el(Reveal, { delay: 120 }, el(Globe))));
+  }
+
   function CTA() {
     return el("section", { style: { background: "var(--gradient-brand)", padding: "84px 0" } },
       el("div", { style: { maxWidth: "var(--container-max)", margin: "0 auto", padding: "0 24px", textAlign: "center" } },
@@ -287,7 +306,7 @@ export default function HomeView() {
   }
 
   return el("div", null,
-    el(Hero), el(StatStrip), el(Clients), el(Services), el(Process), el(Why),
+    el(Hero), el(StatStrip), el(VendorWall), el(GlobalNetwork), el(Services), el(Process), el(Why),
     el(IndustriesPreview), el(Expertise), el(CasePreview), el(Impact),
     el(Testimonials), el(Insights), el(FAQ), el(CTA));
 }

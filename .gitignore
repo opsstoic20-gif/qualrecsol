@@ -53,3 +53,7 @@ next-env.d.ts
 
 # raw source video (served copy is public/hero-bg.mp4)
 /blue bg.mp4
+
+# raw source asset folders (processed copies live in public/)
+/vendor logos/
+/country photos/

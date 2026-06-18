@@ -17,17 +17,19 @@
   --surface-2: #F8FAFC;
   --tint: #EFF6FF;
 
-  --brand: #1D4ED8;
-  --brand-bright: #2563EB;
-  --brand-ink: #0B1F4D;
-  --accent: #0E7490;
-  --success: #10B981;
+  --brand: #2147C9;
+  --brand-bright: #2D5BE0;
+  --brand-ink: #0E1B33;
+  --accent: #2C6E8F;
+  --success: #14855E;
 
-  --brand-15: rgba(29, 78, 216, 0.15);
+  --brand-15: rgba(33, 71, 201, 0.16);
   --white-10: rgba(255, 255, 255, 0.10);
   --white-70: rgba(255, 255, 255, 0.70);
 
-  --gradient-brand: linear-gradient(120deg, #0B1F4D 0%, #1D4ED8 55%, #0E7490 120%);
+  /* Matte: dark bands are a flat, low-sheen navy (barely-there same-hue shift, no teal). */
+  --band-dark: #0E1B33;
+  --gradient-brand: linear-gradient(168deg, #13223D 0%, #0C1830 100%);
 
   /* Semantic aliases */
   --text-heading: var(--ink);
@@ -147,6 +149,14 @@ img, video { display: block; max-width: 100%; }
 .qr-container { max-width: var(--container-max); margin-inline: auto; padding-inline: var(--gutter); }
 .qr-gradient { background: var(--gradient-brand); }
 
+/* Matte dot textures — atmosphere/depth without gradient sheen */
+.qr-dots { background-image: radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1px); background-size: 22px 22px; }
+.qr-dots-ink { background-image: radial-gradient(rgba(15,23,42,0.045) 1px, transparent 1px); background-size: 22px 22px; }
+
+/* Vendor logos — greyscale until hovered */
+.qr-vendor { filter: grayscale(1); opacity: 0.5; transition: filter .3s var(--ease-out), opacity .3s var(--ease-out), transform .3s var(--ease-out); }
+.qr-vendor:hover { filter: grayscale(0); opacity: 1; transform: translateY(-2px); }
+
 /* ---------- Page + section animation ---------- */
 .qr-page { animation: qrFade .4s var(--ease-out); }
 @keyframes qrFade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
@@ -219,6 +229,26 @@ img, video { display: block; max-width: 100%; }
 @media (max-width: 640px) {
   :root { --section-py: 60px; }
   .qr-hero-pad { padding-top: 84px !important; padding-bottom: 96px !important; }
+}
+
+/* ---------- Globe (animated) ---------- */
+.qr-arc { stroke-dashoffset: 0; }
+@keyframes qrArcDraw {
+  0% { stroke-dashoffset: 1; opacity: 0; }
+  12% { opacity: 1; }
+  46% { stroke-dashoffset: 0; }
+  82% { opacity: 1; }
+  100% { stroke-dashoffset: 0; opacity: 0; }
+}
+@keyframes qrPing {
+  0% { transform: scale(1); opacity: 0.5; }
+  70% { opacity: 0; }
+  100% { transform: scale(2.6); opacity: 0; }
+}
+@keyframes qrSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: no-preference) {
+  .qr-arc { animation: qrArcDraw 6.5s ease-in-out infinite; }
+  .qr-ping { transform-box: fill-box; transform-origin: center; animation: qrPing 3.4s ease-out infinite; }
 }
 
 /* ---------- Reduced motion ---------- */

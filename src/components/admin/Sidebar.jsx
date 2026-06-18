@@ -12,6 +12,7 @@ const NAV = [
   { href: "/admin/jobs", label: "Jobs", icon: I.Briefcase },
   { href: "/admin/applications", label: "Applications", icon: I.Inbox },
   { href: "/admin/messages", label: "Messages", icon: I.Mail },
+  { href: "/admin/analytics", label: "Analytics", icon: I.BarChart },
 ];
 
 export default function Sidebar({ email }) {

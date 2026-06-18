@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Plus_Jakarta_Sans, Inter } from "next/font/google";
 import "./globals.css";
 import { SITE } from "@/lib/content/site";
+import Analytics from "@/components/Analytics";
 
 const jakarta = Plus_Jakarta_Sans({
   variable: "--font-jakarta",
@@ -116,6 +117,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         {children}
+        <Analytics />
       </body>
     </html>
   );
