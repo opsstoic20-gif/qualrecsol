@@ -17,19 +17,22 @@
   --surface-2: #F8FAFC;
   --tint: #EFF6FF;
 
-  --brand: #2147C9;
-  --brand-bright: #2D5BE0;
-  --brand-ink: #0E1B33;
+  /* Brighter, lighter brand blue — airier across links/buttons/accents (still AA ≥4.5 on white). */
+  --brand: #2E63E6;
+  --brand-bright: #4F86F2;
+  /* Dark bands lifted from near-black navy to a lighter deep blue (matte, not heavy). */
+  --brand-ink: #16294B;
   --accent: #2C6E8F;
   --success: #14855E;
 
-  --brand-15: rgba(33, 71, 201, 0.16);
+  --brand-15: rgba(46, 99, 230, 0.16);
   --white-10: rgba(255, 255, 255, 0.10);
   --white-70: rgba(255, 255, 255, 0.70);
 
-  /* Matte: dark bands are a flat, low-sheen navy (barely-there same-hue shift, no teal). */
-  --band-dark: #0E1B33;
-  --gradient-brand: linear-gradient(168deg, #13223D 0%, #0C1830 100%);
+  /* Matte: dark bands are a flat, low-sheen deep blue (lighter than before, no teal). */
+  --band-dark: #16294B;
+  --gradient-brand: linear-gradient(165deg, #1E3761 0%, #16294B 100%);
+  --hero-light: linear-gradient(165deg, #F3F7FF 0%, #E7F0FC 52%, #ECF2FE 100%);
 
   /* Semantic aliases */
   --text-heading: var(--ink);
@@ -108,7 +111,8 @@
 
 /* ---------- Base element defaults ---------- */
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+/* scroll-padding-top offsets the 68px sticky navbar so #anchor jumps land below it. */
+html { scroll-behavior: smooth; scroll-padding-top: 90px; }
 
 body {
   margin: 0;
@@ -205,6 +209,8 @@ img, video { display: block; max-width: 100%; }
   .qr-nav-links { display: none !important; }
   .qr-nav-cta { display: none !important; }
   .qr-nav-burger { display: inline-flex !important; }
+  .qr-hero-grid { grid-template-columns: 1fr !important; gap: 0 !important; }
+  .qr-hero-globe { display: none !important; }
   .qr-why-grid, .qr-foot-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
   .qr-svc-grid, .qr-tst-grid { grid-template-columns: 1fr 1fr !important; }
   .qr-exp-grid { grid-template-columns: 1fr 1fr 1fr !important; }

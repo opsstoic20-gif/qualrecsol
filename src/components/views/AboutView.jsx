@@ -72,14 +72,14 @@ export default function AboutView() {
             el("p", { style: { margin: 0, fontSize: "var(--fs-body)", lineHeight: 1.6, color: "var(--body)" } }, b))))),
 
     // Core values
-    el("section", { style: { background: "var(--surface-2)", padding: "var(--section-py) 0" } },
+    el("section", { id: "values", style: { background: "var(--surface-2)", padding: "var(--section-py) 0" } },
       el("div", { style: { maxWidth: "var(--container-max)", margin: "0 auto", padding: "0 24px" } },
         el(Head, { eyebrow: "Core values", title: "Principles that guide every engagement", lead: "These shape how we interact with clients, partners, and each other." }),
         el("div", { style: { marginTop: "52px", display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: "20px" }, className: "qr-svc-grid" },
           VALUES.map((v, i) => el(Reveal, { key: i, delay: (i % 4) * 60 }, el(QR.Card, { icon: el(v.icon, { size: 22 }), title: v.title, interactive: true, style: { height: "100%" } }, v.body)))))),
 
     // Leadership
-    el("section", { style: { background: "#fff", padding: "var(--section-py) 0" } },
+    el("section", { id: "leadership", style: { background: "#fff", padding: "var(--section-py) 0" } },
       el("div", { style: { maxWidth: "var(--container-max)", margin: "0 auto", padding: "0 24px" } },
         el(Head, { eyebrow: "Leadership team", title: "The people who guide our strategy", lead: "Experienced professionals leading our vision and operational excellence." }),
         el("div", { style: { marginTop: "52px", display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: "24px" }, className: "qr-svc-grid" },
@@ -101,7 +101,7 @@ export default function AboutView() {
                     style: { width: "34px", height: "34px", borderRadius: "9px", background: "var(--surface-2)", color: "var(--muted)", display: "flex", alignItems: "center", justifyContent: "center", transition: "background .2s, color .2s" } }, el(I.Mail, { size: 16 }))))))))),
 
     // Journey timeline
-    el("section", { style: { background: "var(--brand-ink)", padding: "var(--section-py) 0" } },
+    el("section", { id: "story", style: { background: "var(--brand-ink)", padding: "var(--section-py) 0" } },
       el("div", { style: { maxWidth: "920px", margin: "0 auto", padding: "0 24px" } },
         el(Head, { eyebrow: "Our journey", title: "From three founders to a global firm", tone: "dark" }),
         el("div", { style: { position: "relative", marginTop: "56px", paddingLeft: "0" } },

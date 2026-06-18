@@ -19,9 +19,9 @@ export const NAV_LINKS = [
     label: "About",
     href: "/about",
     menu: [
-      ["Our story", "/about"],
-      ["Leadership", "/about"],
-      ["Core values", "/about"],
+      ["Our story", "/about#story"],
+      ["Leadership", "/about#leadership"],
+      ["Core values", "/about#values"],
     ] as [string, string][],
   },
   {
@@ -29,9 +29,9 @@ export const NAV_LINKS = [
     label: "Services",
     href: "/services",
     menu: [
-      ["Staffing models", "/services"],
-      ["Areas of expertise", "/services"],
-      ["IT solutions", "/services"],
+      ["Staffing models", "/services#staffing-models"],
+      ["Areas of expertise", "/services#expertise"],
+      ["IT solutions", "/services#it-solutions"],
     ] as [string, string][],
   },
   {
@@ -39,9 +39,9 @@ export const NAV_LINKS = [
     label: "Industries",
     href: "/industries",
     menu: [
-      ["Healthcare", "/industries"],
-      ["Financial services", "/industries"],
-      ["Manufacturing", "/industries"],
+      ["Healthcare", "/industries#healthcare"],
+      ["Financial services", "/industries#financial-services"],
+      ["Manufacturing", "/industries#manufacturing"],
     ] as [string, string][],
   },
   {

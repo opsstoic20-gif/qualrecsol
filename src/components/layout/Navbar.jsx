@@ -9,10 +9,27 @@ import { Icons } from "@/components/icons";
 
 const { ArrowRight, ChevronDown, Menu, X } = Icons;
 
+// Grace period before a hovered dropdown closes — gives time to move down and click.
+const MENU_CLOSE_DELAY = 2500;
+
 function NavLink({ link, active }) {
   const [open, setOpen] = React.useState(false);
+  const closeTimer = React.useRef(null);
+
+  const openNow = () => {
+    if (!link.menu) return;
+    if (closeTimer.current) { clearTimeout(closeTimer.current); closeTimer.current = null; }
+    setOpen(true);
+  };
+  const closeSoon = () => {
+    if (!link.menu) return;
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    closeTimer.current = setTimeout(() => setOpen(false), MENU_CLOSE_DELAY);
+  };
+  React.useEffect(() => () => { if (closeTimer.current) clearTimeout(closeTimer.current); }, []);
+
   return (
-    <div style={{ position: "relative" }} onMouseEnter={() => link.menu && setOpen(true)} onMouseLeave={() => setOpen(false)}>
+    <div style={{ position: "relative" }} onMouseEnter={openNow} onMouseLeave={closeSoon}>
       <Link
         href={link.href}
         style={{
@@ -26,19 +43,27 @@ function NavLink({ link, active }) {
         <span style={{ position: "absolute", left: 0, right: 0, bottom: 0, height: "2px", background: "var(--brand)", borderRadius: "2px", transform: active ? "scaleX(1)" : "scaleX(0)", transformOrigin: "left", transition: "transform .25s var(--ease-out)" }} />
       </Link>
       {link.menu && open && (
-        <div style={{ position: "absolute", top: "calc(100% + 6px)", left: "-12px", minWidth: "210px", background: "#fff", border: "1px solid var(--hairline)", borderRadius: "12px", boxShadow: "var(--shadow-md)", padding: "8px", zIndex: 60 }}>
-          {link.menu.map(([label, target], i) => (
-            <Link
-              key={i}
-              href={target}
-              onClick={() => setOpen(false)}
-              onMouseEnter={(e) => (e.currentTarget.style.background = "var(--tint)")}
-              onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
-              style={{ display: "block", width: "100%", textAlign: "left", background: "transparent", border: "none", cursor: "pointer", padding: "10px 12px", borderRadius: "8px", fontFamily: "var(--font-body)", fontSize: "14px", fontWeight: 500, color: "var(--body)", transition: "background .15s" }}
-            >
-              {label}
-            </Link>
-          ))}
+        // Outer wrapper starts at the trigger's bottom edge with a transparent paddingTop —
+        // a hover "bridge" so crossing the gap to the menu never drops the hover.
+        <div
+          onMouseEnter={openNow}
+          onMouseLeave={closeSoon}
+          style={{ position: "absolute", top: "100%", left: "-12px", paddingTop: "10px", minWidth: "232px", zIndex: 60 }}
+        >
+          <div style={{ background: "#fff", border: "1px solid var(--hairline)", borderRadius: "12px", boxShadow: "var(--shadow-md)", padding: "8px" }}>
+            {link.menu.map(([label, target], i) => (
+              <Link
+                key={i}
+                href={target}
+                onClick={() => setOpen(false)}
+                onMouseEnter={(e) => (e.currentTarget.style.background = "var(--tint)")}
+                onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
+                style={{ display: "block", width: "100%", textAlign: "left", background: "transparent", border: "none", cursor: "pointer", padding: "10px 12px", borderRadius: "8px", fontFamily: "var(--font-body)", fontSize: "14px", fontWeight: 500, color: "var(--body)", transition: "background .15s" }}
+              >
+                {label}
+              </Link>
+            ))}
+          </div>
         </div>
       )}
     </div>

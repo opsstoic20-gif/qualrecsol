@@ -70,31 +70,34 @@ export default function HomeView() {
   const router = useRouter();
   const onNavigate = (id) => router.push(ROUTES[id] || "/");
 
-  // ---- Hero (cinematic gradient, no stock video) ----
+  // ---- Hero — light & matte; video washed to ~80% white; animated globe overlaid on the right ----
   function Hero() {
-    return el("section", { style: { position: "relative", background: "var(--brand-ink)", overflow: "hidden" } },
-      // Background video (decorative). Falls back to the brand-ink base if it can't load.
-      el("video", { autoPlay: true, muted: true, loop: true, playsInline: true, preload: "auto", "aria-hidden": "true", style: { position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", zIndex: 0, opacity: 0.2 } },
+    return el("section", { style: { position: "relative", background: "var(--hero-light)", overflow: "hidden" } },
+      // Background video (decorative). Over a LIGHT base at low opacity → reads ~80% white with a faint blue motion wash (no longer darkened). Falls back to the light base if it can't load.
+      el("video", { autoPlay: true, muted: true, loop: true, playsInline: true, preload: "auto", "aria-hidden": "true", style: { position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", zIndex: 0, opacity: 0.3 } },
         el("source", { src: "/hero-bg.mp4", type: "video/mp4" })),
-      // Matte legibility veil (flat, low-sheen — keeps copy crisp over the dim video).
-      el("div", { "aria-hidden": "true", style: { position: "absolute", inset: 0, zIndex: 1, background: "linear-gradient(110deg, rgba(10,21,40,0.82) 0%, rgba(10,21,40,0.55) 60%, rgba(10,21,40,0.42) 100%)", pointerEvents: "none" } }),
-      el("div", { className: "qr-grid", "aria-hidden": "true", style: { position: "absolute", inset: 0, zIndex: 1, backgroundImage: "linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px)", backgroundSize: "64px 64px", maskImage: "radial-gradient(circle at 78% 8%, #000, transparent 70%)", WebkitMaskImage: "radial-gradient(circle at 78% 8%, #000, transparent 70%)", pointerEvents: "none", opacity: 0.45 } }),
-      // Fade the bottom edge to white so the hero melts into the page.
-      el("div", { "aria-hidden": "true", style: { position: "absolute", left: 0, right: 0, bottom: 0, height: "32%", zIndex: 1, background: "linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 45%, #FFFFFF 100%)", pointerEvents: "none" } }),
-      el("div", { className: "qr-hero-pad", style: { maxWidth: "var(--container-max)", margin: "0 auto", padding: "118px 24px 140px", position: "relative", zIndex: 2 } },
-        el("div", { style: { maxWidth: "760px" } },
-          el("div", { className: "qr-rise", style: { animationDelay: "0ms" } }, el(QR.Eyebrow, { tone: "onDark" }, "IT Talent & Solutions")),
-          el("h1", { className: "qr-rise", style: { animationDelay: "80ms", marginTop: "20px", color: "#fff", maxWidth: "13ch" } },
-            "Talent that fits. ", el("span", { style: { color: "#93B4F7" } }, "Hires that stick.")),
-          el("p", { className: "qr-rise", style: { animationDelay: "150ms", marginTop: "22px", fontSize: "var(--fs-lead)", lineHeight: 1.55, color: "rgba(255,255,255,0.82)", maxWidth: "60ch" } },
+      // Light veil — strongest under the copy (left), fading toward the globe (right). Keeps the hero airy/matte and the dark copy crisp.
+      el("div", { "aria-hidden": "true", style: { position: "absolute", inset: 0, zIndex: 1, background: "linear-gradient(100deg, rgba(255,255,255,0.88) 0%, rgba(255,255,255,0.68) 42%, rgba(243,247,255,0.34) 72%, rgba(243,247,255,0.12) 100%)", pointerEvents: "none" } }),
+      // Matte dot texture (ink dots on light).
+      el("div", { className: "qr-dots-ink", "aria-hidden": "true", style: { position: "absolute", inset: 0, zIndex: 1, opacity: 0.6, pointerEvents: "none" } }),
+      el("div", { className: "qr-hero-pad qr-hero-grid", style: { maxWidth: "var(--container-max)", margin: "0 auto", padding: "100px 24px 104px", position: "relative", zIndex: 2, display: "grid", gridTemplateColumns: "1.04fr 0.96fr", gap: "32px", alignItems: "center" } },
+        el("div", { style: { maxWidth: "620px" } },
+          el("div", { className: "qr-rise", style: { animationDelay: "0ms" } },
+            el("span", { style: { display: "inline-flex", alignItems: "center", gap: "9px", fontFamily: "var(--font-body)", fontSize: "12.5px", fontWeight: 600, letterSpacing: ".14em", textTransform: "uppercase", color: "var(--brand)", background: "rgba(46,99,230,0.08)", border: "1px solid var(--brand-15)", borderRadius: "999px", padding: "6px 14px" } },
+              el("span", { style: { width: "7px", height: "7px", borderRadius: "50%", background: "var(--brand)" } }), "IT Talent & Solutions")),
+          el("h1", { className: "qr-rise", style: { animationDelay: "80ms", marginTop: "20px", color: "var(--ink)", maxWidth: "13ch" } },
+            "Talent that fits. ", el("span", { style: { color: "var(--brand)" } }, "Hires that stick.")),
+          el("p", { className: "qr-rise", style: { animationDelay: "150ms", marginTop: "22px", fontSize: "var(--fs-lead)", lineHeight: 1.55, color: "var(--body)", maxWidth: "56ch" } },
             "We connect skilled tech talent to enterprises across borders — and our contract-to-hire model lets you try before you commit, so every hire is the right one."),
-          el("div", { className: "qr-rise", style: { animationDelay: "220ms", marginTop: "34px", display: "flex", flexWrap: "wrap", gap: "14px" } },
-            el(QR.Button, { variant: "secondary", size: "lg", onClick: () => onNavigate("contact"), iconRight: el(I.ArrowRight, { size: 18 }) }, "Get Started"),
-            el(QR.Button, { variant: "ghost", size: "lg", onClick: () => onNavigate("services") }, "Explore Services"))),
-        el("div", { className: "qr-rise", style: { animationDelay: "300ms", marginTop: "72px", maxWidth: "880px", background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.14)", borderRadius: "18px", padding: "30px 34px", backdropFilter: "blur(4px)" } },
-          el("div", { style: { display: "flex", alignItems: "center", gap: "10px", marginBottom: "22px" } },
-            el("span", { style: { fontFamily: "var(--font-body)", fontSize: "12px", fontWeight: 600, letterSpacing: ".14em", textTransform: "uppercase", color: "rgba(255,255,255,0.6)" } }, "The Contract-to-Hire pipeline")),
-          el(QR.Pipeline, { tone: "dark" }))));
+          el("div", { className: "qr-rise", style: { animationDelay: "220ms", marginTop: "32px", display: "flex", flexWrap: "wrap", gap: "14px" } },
+            el(QR.Button, { variant: "primary", size: "lg", onClick: () => onNavigate("contact"), iconRight: el(I.ArrowRight, { size: 18 }) }, "Get Started"),
+            el(QR.Button, { variant: "secondary", size: "lg", onClick: () => onNavigate("services") }, "Explore Services")),
+          el("div", { className: "qr-rise", style: { animationDelay: "300ms", marginTop: "34px", display: "flex", flexWrap: "wrap", gap: "20px 28px" } },
+            [[I.Shield, "Vetted talent"], [I.Check, "Trusted partner"], [I.Globe, "Global delivery"]].map(([Ic, label], i) =>
+              el("span", { key: i, style: { display: "inline-flex", alignItems: "center", gap: "9px", fontFamily: "var(--font-body)", fontSize: "14.5px", fontWeight: 600, color: "var(--ink)" } },
+                el("span", { style: { color: "var(--brand)", display: "inline-flex" } }, el(Ic, { size: 18 })), label)))),
+        el("div", { className: "qr-hero-globe qr-float", style: { position: "relative", display: "flex", justifyContent: "center" } },
+          el(Globe, { style: { maxWidth: "540px" } }))));
   }
 
   function StatStrip() {
@@ -292,7 +295,17 @@ export default function HomeView() {
           el(Reveal, { delay: 160, style: { marginTop: "32px", display: "flex", gap: "12px", flexWrap: "wrap" } },
             el(QR.Button, { variant: "primary", onClick: () => onNavigate("global"), iconRight: el(I.ArrowRight, { size: 16 }) }, "Explore Global Workforce"),
             el(QR.Button, { variant: "secondary", onClick: () => onNavigate("contact") }, "Talk to an expert"))),
-        el(Reveal, { delay: 120 }, el(Globe))));
+        el(Reveal, { delay: 120, style: { background: "#fff", border: "1px solid var(--hairline)", borderRadius: "20px", boxShadow: "var(--shadow-md)", padding: "12px" } },
+          el("div", { style: { padding: "16px 18px 8px", display: "flex", alignItems: "center", justifyContent: "space-between" } },
+            el("span", { style: { fontFamily: "var(--font-body)", fontSize: "12px", fontWeight: 600, letterSpacing: ".12em", textTransform: "uppercase", color: "var(--muted)" } }, "Talent network"),
+            el(QR.Badge, { tone: "success" }, "2 live")),
+          [["🇺🇸", "United States", "Delivery & client HQ", "Hub"], ["🇮🇳", "India", "Primary talent pipeline", "Live"], ["🇲🇽", "Mexico", "Nearshore · US time zones", "Live"], ["🇧🇷", "Brazil", "São Paulo", "2026"], ["🇦🇷", "Argentina", "Buenos Aires", "2026"]].map((r, i) =>
+            el("div", { key: i, style: { display: "flex", alignItems: "center", gap: "14px", padding: "14px 16px", borderRadius: "14px", background: i % 2 ? "transparent" : "var(--surface-2)" } },
+              el("span", { style: { fontSize: "26px", lineHeight: 1 } }, r[0]),
+              el("div", { style: { flex: 1, minWidth: 0 } },
+                el("div", { style: { fontFamily: "var(--font-display)", fontWeight: 700, fontSize: "15.5px", color: "var(--ink)" } }, r[1]),
+                el("div", { style: { fontSize: "12.5px", color: "var(--muted)", marginTop: "2px" } }, r[2])),
+              el("span", { style: { flex: "0 0 auto", fontSize: "11px", fontWeight: 700, letterSpacing: ".04em", color: r[3] === "Hub" ? "var(--brand)" : r[3] === "Live" ? "var(--success)" : "var(--muted)", background: r[3] === "Hub" ? "var(--tint)" : r[3] === "Live" ? "rgba(20,133,94,0.12)" : "var(--surface-2)", border: r[3] === "2026" ? "1px solid var(--hairline)" : "none", padding: "5px 11px", borderRadius: "999px" } }, r[3]))))));
   }
 
   function CTA() {

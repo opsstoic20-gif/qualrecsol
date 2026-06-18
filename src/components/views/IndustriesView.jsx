@@ -9,6 +9,9 @@ import { ROUTES } from "@/lib/nav";
 
 const el = React.createElement;
 
+// Stable anchor slug from a display name, e.g. "Financial Services" -> "financial-services".
+const slug = (s) => s.toLowerCase().replace(/&/g, "").replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+
 // PLACEHOLDER — industry statistics are illustrative; replace with verified numbers before real-domain launch.
 const INDUSTRIES = [
   { icon: I.HeartPulse, name: "Healthcare", body: "HIPAA-compliant solutions for hospitals, clinics, and providers.", stats: [["50+", "Clients"], ["200+", "Projects"], ["99%", "Satisfaction"]], specs: ["EHR Systems", "Telemedicine", "Medical Imaging", "Compliance"] },
@@ -44,7 +47,7 @@ export default function IndustriesView() {
       el("div", { style: { maxWidth: "var(--container-max)", margin: "0 auto", padding: "0 24px" } },
         el("div", { style: { display: "grid", gridTemplateColumns: "1fr 1fr", gap: "24px" }, className: "qr-svc-grid" },
           INDUSTRIES.map((ind, i) =>
-            el(Reveal, { key: i, delay: (i % 2) * 60, style: { background: "#fff", border: "1px solid var(--hairline)", borderRadius: "16px", padding: "30px 32px", boxShadow: "var(--shadow-sm)" } },
+            el(Reveal, { key: i, id: slug(ind.name), delay: (i % 2) * 60, style: { background: "#fff", border: "1px solid var(--hairline)", borderRadius: "16px", padding: "30px 32px", boxShadow: "var(--shadow-sm)" } },
               el("div", { style: { display: "flex", alignItems: "center", gap: "14px", marginBottom: "16px" } },
                 el("div", { style: { width: "48px", height: "48px", borderRadius: "12px", background: "var(--tint)", color: "var(--brand)", display: "flex", alignItems: "center", justifyContent: "center" } }, el(ind.icon, { size: 24 })),
                 el("h3", { style: { fontSize: "21px" } }, ind.name)),

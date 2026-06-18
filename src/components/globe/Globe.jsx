@@ -30,8 +30,8 @@ const parallels = [
   { cy: 158, rx: 222 }, { cy: 842, rx: 222 },
 ];
 
-const LINE = "rgba(33,71,201,0.20)";
-const BRAND = "#2147C9";
+const LINE = "rgba(46,99,230,0.20)";
+const BRAND = "#2E63E6";
 
 export default function Globe({ className = "", style = {} }) {
   return el("div", { className: `qr-globe ${className}`, style: { width: "100%", maxWidth: "560px", margin: "0 auto", ...style } },
@@ -45,7 +45,7 @@ export default function Globe({ className = "", style = {} }) {
 
       // Sphere body (matte, low-contrast)
       el("circle", { cx: C.x, cy: C.y, r: C.r, fill: "url(#qrSphere)" }),
-      el("circle", { cx: C.x, cy: C.y, r: C.r, fill: "none", stroke: "rgba(33,71,201,0.28)", strokeWidth: 1.5 }),
+      el("circle", { cx: C.x, cy: C.y, r: C.r, fill: "none", stroke: "rgba(46,99,230,0.28)", strokeWidth: 1.5 }),
 
       // Graticule (clipped to sphere)
       el("g", { clipPath: "url(#qrClip)", fill: "none", stroke: LINE, strokeWidth: 1 },

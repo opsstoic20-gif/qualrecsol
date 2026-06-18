@@ -73,7 +73,7 @@ export default function ServicesView() {
     el(PageHero, { onNavigate }),
 
     // Staffing models
-    el("section", { style: { background: "#fff", padding: "var(--section-py) 0" } },
+    el("section", { id: "staffing-models", style: { background: "#fff", padding: "var(--section-py) 0" } },
       el("div", { style: { maxWidth: "var(--container-max)", margin: "0 auto", padding: "0 24px" } },
         el(Head, { eyebrow: "Staffing models", title: "Five ways to build your team" }),
         el("div", { style: { marginTop: "52px", display: "flex", flexDirection: "column", gap: "20px" } },
@@ -90,14 +90,14 @@ export default function ServicesView() {
                 m.points.map((p, k) => el(QR.CheckItem, { key: k, style: { fontSize: "14px" } }, p)))))))),
 
     // Areas of expertise (expandable)
-    el("section", { style: { background: "var(--surface-2)", padding: "var(--section-py) 0" } },
+    el("section", { id: "expertise", style: { background: "var(--surface-2)", padding: "var(--section-py) 0" } },
       el("div", { style: { maxWidth: "var(--container-max)", margin: "0 auto", padding: "0 24px" } },
         el(Head, { eyebrow: "Areas of expertise", title: "Specialized recruiters per domain", lead: "Expand a domain to see the skills we screen for." }),
         el("div", { style: { marginTop: "48px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px" }, className: "qr-why-grid" },
           EXPERTISE.map(([t, skills], i) => el(Reveal, { key: i, delay: (i % 2) * 60 }, el(Expandable, { title: t, skills })))))),
 
     // IT solutions
-    el("section", { style: { background: "#fff", padding: "var(--section-py) 0" } },
+    el("section", { id: "it-solutions", style: { background: "#fff", padding: "var(--section-py) 0" } },
       el("div", { style: { maxWidth: "var(--container-max)", margin: "0 auto", padding: "0 24px" } },
         el(Head, { eyebrow: "IT solutions", title: "Beyond staffing", lead: "When you need outcomes, not just headcount, our delivery teams take the build." }),
         el("div", { style: { marginTop: "52px", display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: "24px" }, className: "qr-svc-grid" },
