@@ -298,7 +298,7 @@ export default function HomeView() {
           el("div", { style: { padding: "16px 18px 8px", display: "flex", alignItems: "center", justifyContent: "space-between" } },
             el("span", { style: { fontFamily: "var(--font-body)", fontSize: "12px", fontWeight: 600, letterSpacing: ".12em", textTransform: "uppercase", color: "var(--muted)" } }, "Talent network"),
             el(QR.Badge, { tone: "success" }, "3 live")),
-          [["🇺🇸", "United States", "Florida — HQ (US-to-US staffing)", "Live"], ["🇮🇳", "India", "Jaspur · Banjara Hills, Hyderabad", "Live"], ["🇲🇽", "Mexico", "Mérida, Yucatán", "Live"], ["🇧🇷", "Brazil", "São Paulo", "2026"], ["🇦🇷", "Argentina", "Buenos Aires", "2026"]].map((r, i) =>
+          [["🇺🇸", "United States", "Florida — HQ (US-to-US staffing)", "Live"], ["🇮🇳", "India", "Jaspur (Uttarakhand) · Hyderabad", "Live"], ["🇲🇽", "Mexico", "Mérida, Yucatán", "Live"], ["🇧🇷", "Brazil", "São Paulo", "2026"], ["🇦🇷", "Argentina", "Buenos Aires", "2026"]].map((r, i) =>
             el("div", { key: i, style: { display: "flex", alignItems: "center", gap: "14px", padding: "14px 16px", borderRadius: "14px", background: i % 2 ? "transparent" : "var(--surface-2)" } },
               el("span", { style: { fontSize: "26px", lineHeight: 1 } }, r[0]),
               el("div", { style: { flex: 1, minWidth: 0 } },

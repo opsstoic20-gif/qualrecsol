@@ -50,6 +50,7 @@ export const NAV_LINKS = [
     href: "/global",
     menu: [
       ["Global Workforce", "/global"],
+      ["Hire in the USA", "/global/usa"],
       ["Hire in India", "/global/india"],
       ["Hire in Mexico", "/global/mexico"],
     ] as [string, string][],

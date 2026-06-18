@@ -159,20 +159,20 @@ export const COUNTRIES: Record<string, CountryGuide> = {
       { label: "Capital", value: "New Delhi" },
       { label: "Currency", value: "Indian Rupee (INR)" },
       { label: "Payroll", value: "Monthly" },
-      { label: "Team", value: "Noida · Hyderabad · Jaspur" },
+      { label: "Team", value: "Noida · Hyderabad · Jaspur (Uttarakhand)" },
     ],
     overview: {
       body: "Companies hiring in India typically need either a local legal entity or a workforce partner that can legally employ on their behalf. QualRec already operates in-country — established entity since 2020, not a third-party EOR markup.",
       bullets: [
         "Established entity since 2020 — not a third-party EOR markup",
-        "Three offices: Noida, Hyderabad, Jaspur",
+        "Three offices: Noida, Hyderabad, and Jaspur (Uttarakhand)",
         "125+ consultants currently deployed",
         "Native HR & payroll team — no offshored helpdesk",
       ],
       talents: ["Software engineering", "QA & test automation", "Data engineering", "Cloud & DevOps", "AI / ML", "Customer success"],
     },
     law: {
-      intro: "Indian labour falls under concurrent jurisdiction — both Central and State governments legislate on wages, social security, and industrial relations. We've operated entities in Noida, Hyderabad, and Jaspur since 2020 and stay current on every change.",
+      intro: "Indian labour falls under concurrent jurisdiction — both Central and State governments legislate on wages, social security, and industrial relations. We've operated entities in Noida, Hyderabad, and Jaspur (Uttarakhand) since 2020 and stay current on every change.",
       items: [
         { h: "Minimum Wage", p: "Minimum wages vary by state and skill tier. For Area A (Delhi, Mumbai, Bangalore): unskilled ₹783/day (~₹20,358/month), semi-skilled ₹868/day, skilled ₹954/day, highly skilled ₹1,035/day. We benchmark all offers well above statutory minimums to attract senior engineering talent." },
         { h: "Payroll Cycle", p: "Monthly, paid on or before the last working day in arrears. Payslips include Provident Fund (12% employer + 12% employee), Professional Tax (state-specific), TDS, and ESI where applicable." },

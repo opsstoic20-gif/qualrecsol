@@ -11,29 +11,16 @@ import { Icons } from "@/components/icons";
 
 const { ArrowRight, ChevronDown, Menu, X } = Icons;
 
-// Grace period before a hovered dropdown closes — gives time to move down and click.
-const MENU_CLOSE_DELAY = 2500;
+// Grace period before a hovered dropdown closes — short, just enough to cross the gap.
+const MENU_CLOSE_DELAY = 500;
 
-function NavLink({ link, active }) {
-  const [open, setOpen] = React.useState(false);
-  const closeTimer = React.useRef(null);
-
-  const openNow = () => {
-    if (!link.menu) return;
-    if (closeTimer.current) { clearTimeout(closeTimer.current); closeTimer.current = null; }
-    setOpen(true);
-  };
-  const closeSoon = () => {
-    if (!link.menu) return;
-    if (closeTimer.current) clearTimeout(closeTimer.current);
-    closeTimer.current = setTimeout(() => setOpen(false), MENU_CLOSE_DELAY);
-  };
-  React.useEffect(() => () => { if (closeTimer.current) clearTimeout(closeTimer.current); }, []);
-
+// Controlled by Navbar so only ONE dropdown is ever open (opening one closes the rest).
+function NavLink({ link, active, open, onOpen, onCloseSoon, onCloseNow }) {
   return (
-    <div style={{ position: "relative" }} onMouseEnter={openNow} onMouseLeave={closeSoon}>
+    <div style={{ position: "relative" }} onMouseEnter={() => link.menu && onOpen()} onMouseLeave={() => link.menu && onCloseSoon()}>
       <Link
         href={link.href}
+        onClick={onCloseNow}
         style={{
           display: "inline-flex", alignItems: "center", gap: "5px", background: "none", border: "none", cursor: "pointer",
           fontFamily: "var(--font-body)", fontSize: "15px", fontWeight: active ? 600 : 500,
@@ -47,8 +34,8 @@ function NavLink({ link, active }) {
       {link.menu && open && (
         // Transparent paddingTop bridges the trigger→menu gap so the hover never drops.
         <div
-          onMouseEnter={openNow}
-          onMouseLeave={closeSoon}
+          onMouseEnter={onOpen}
+          onMouseLeave={onCloseSoon}
           style={{ position: "absolute", top: "100%", left: "-12px", paddingTop: "10px", minWidth: "232px", zIndex: 60 }}
         >
           <div style={{ background: "#fff", border: "1px solid var(--hairline)", borderRadius: "12px", boxShadow: "var(--shadow-md)", padding: "8px" }}>
@@ -56,7 +43,7 @@ function NavLink({ link, active }) {
               <Link
                 key={i}
                 href={target}
-                onClick={() => setOpen(false)}
+                onClick={onCloseNow}
                 onMouseEnter={(e) => (e.currentTarget.style.background = "var(--tint)")}
                 onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
                 style={{ display: "block", width: "100%", textAlign: "left", background: "transparent", border: "none", cursor: "pointer", padding: "10px 12px", borderRadius: "8px", fontFamily: "var(--font-body)", fontSize: "14px", fontWeight: 500, color: "var(--body)", transition: "background .15s" }}
@@ -77,8 +64,16 @@ export default function Navbar() {
   const [progress, setProgress] = React.useState(0);
   const [mobile, setMobile] = React.useState(false);
   const [mounted, setMounted] = React.useState(false);
+  // Single shared "which dropdown is open" — guarantees one-at-a-time (stack) behaviour.
+  const [openMenu, setOpenMenu] = React.useState(null);
+  const menuTimer = React.useRef(null);
+
+  const openMenuNow = (id) => { if (menuTimer.current) { clearTimeout(menuTimer.current); menuTimer.current = null; } setOpenMenu(id); };
+  const closeMenuSoon = () => { if (menuTimer.current) clearTimeout(menuTimer.current); menuTimer.current = setTimeout(() => setOpenMenu(null), MENU_CLOSE_DELAY); };
+  const closeMenuNow = () => { if (menuTimer.current) { clearTimeout(menuTimer.current); menuTimer.current = null; } setOpenMenu(null); };
 
   React.useEffect(() => setMounted(true), []);
+  React.useEffect(() => () => { if (menuTimer.current) clearTimeout(menuTimer.current); }, []);
 
   React.useEffect(() => {
     const onScroll = () => {
@@ -91,8 +86,8 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Close the mobile sheet on route change.
-  React.useEffect(() => { setMobile(false); }, [pathname]);
+  // Close the mobile sheet + any open dropdown on route change.
+  React.useEffect(() => { setMobile(false); setOpenMenu(null); }, [pathname]);
 
   // Lock background scroll while the mobile sheet is open.
   React.useEffect(() => {
@@ -156,7 +151,7 @@ export default function Navbar() {
             <img src="/logo-qualrec.png" alt="Qualrec Solutions" style={{ height: "38px", width: "auto", display: "block" }} width="97" height="38" />
           </Link>
           <nav className="qr-nav-links" style={{ display: "flex", alignItems: "center", gap: "22px" }}>
-            {NAV_LINKS.map((l) => <NavLink key={l.id} link={l} active={isActive(l.href)} />)}
+            {NAV_LINKS.map((l) => <NavLink key={l.id} link={l} active={isActive(l.href)} open={openMenu === l.id} onOpen={() => openMenuNow(l.id)} onCloseSoon={closeMenuSoon} onCloseNow={closeMenuNow} />)}
           </nav>
           <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
             <Link href="/contact" className="qr-nav-cta" style={{ display: "inline-flex", alignItems: "center", gap: "8px", background: "var(--brand)", color: "#fff", borderRadius: "10px", padding: "9px 16px", fontFamily: "var(--font-body)", fontSize: "14px", fontWeight: 600 }}>
