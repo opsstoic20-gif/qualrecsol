@@ -150,7 +150,7 @@ export default function HomeView() {
           el(Reveal, null, el(QR.Eyebrow, null, "Why Qualrec")),
           el(Reveal, { delay: 60, as: "h2", style: { marginTop: "14px" } }, "A decade of placing talent that performs"),
           el(Reveal, { delay: 120, as: "p", style: { marginTop: "16px", fontSize: "var(--fs-lead)", color: "var(--body)", lineHeight: 1.55 } }, "We pair deep technical vetting with a global sourcing pipeline, so the people we place are productive from week one."),
-          el("ul", { style: { marginTop: "28px", padding: 0, display: "grid", gap: "14px" } }, WHY.map((w, i) => el(Reveal, { key: i, delay: 60 * i, as: "div" }, el(QR.CheckItem, null, w)))),
+          el(Reveal, null, el("ul", { style: { marginTop: "28px", padding: 0, display: "grid", gap: "14px" } }, WHY.map((w, i) => el(QR.CheckItem, { key: i }, w)))),
           el(Reveal, { delay: 120, style: { marginTop: "32px" } }, el(QR.Button, { variant: "primary", onClick: () => onNavigate("about"), iconRight: el(I.ArrowRight, { size: 16 }) }, "Learn more about us"))),
         el(Reveal, { delay: 120, style: { background: "var(--gradient-brand)", borderRadius: "20px", padding: "44px 40px", color: "#fff" } },
           el("div", { style: { fontFamily: "var(--font-body)", fontSize: "12px", fontWeight: 600, letterSpacing: ".14em", textTransform: "uppercase", color: "rgba(255,255,255,0.62)", marginBottom: "26px" } }, "From requirement to converted hire"),
@@ -241,7 +241,7 @@ export default function HomeView() {
               el("div", { style: { marginTop: "auto", paddingTop: "6px" } },
                 el("div", { style: { fontFamily: "var(--font-display)", fontWeight: 700, fontSize: "15px", color: "#fff" } }, t.name),
                 el("div", { style: { fontSize: "13px", color: "rgba(255,255,255,0.6)", marginTop: "2px" } }, t.role))))),
-        el("p", { style: { marginTop: "28px", textAlign: "center", fontSize: "12.5px", color: "rgba(255,255,255,0.4)" } }, "Testimonials shown are illustrative placeholders.")));
+        el("p", { style: { marginTop: "28px", textAlign: "center", fontSize: "12.5px", color: "rgba(255,255,255,0.72)" } }, "Testimonials shown are illustrative placeholders.")));
   }
 
   function Insights() {
@@ -258,7 +258,7 @@ export default function HomeView() {
               el("h3", { style: { fontSize: "19px", lineHeight: 1.35 } }, p.title),
               el("div", { style: { marginTop: "auto", display: "flex", gap: "12px", color: "var(--muted)", fontSize: "13px" } }, el("span", null, p.date), el("span", null, "·"), el("span", null, p.read)),
               el("span", { style: { display: "inline-flex", alignItems: "center", gap: "6px", color: "var(--brand)", fontSize: "14px", fontWeight: 600 } }, "Read article", el(I.ArrowRight, { size: 15 }))))),
-        el("p", { style: { marginTop: "24px", textAlign: "center", fontSize: "12px", color: "var(--muted)", opacity: 0.8 } }, "Article previews are illustrative placeholders.")));
+        el("p", { style: { marginTop: "24px", textAlign: "center", fontSize: "12px", color: "var(--body)" } }, "Article previews are illustrative placeholders.")));
   }
 
   function FaqRow({ q, a }) {

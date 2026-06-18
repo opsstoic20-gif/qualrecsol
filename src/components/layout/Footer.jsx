@@ -11,7 +11,7 @@ const { Mail, Phone, MapPin, Linkedin, Facebook } = Icons;
 function Col({ heading, items }) {
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
-      <h4 style={{ fontFamily: "var(--font-body)", fontSize: "13px", fontWeight: 600, letterSpacing: ".1em", textTransform: "uppercase", color: "rgba(255,255,255,0.55)", margin: "0 0 4px" }}>{heading}</h4>
+      <h3 style={{ fontFamily: "var(--font-body)", fontSize: "13px", fontWeight: 600, letterSpacing: ".1em", textTransform: "uppercase", color: "rgba(255,255,255,0.7)", margin: "0 0 4px" }}>{heading}</h3>
       {items.map(([label, href], i) => (
         <Link
           key={i}
