@@ -50,3 +50,6 @@ next-env.d.ts
 
 # raw source photos (processed copies live in public/team)
 /company people/
+
+# raw source video (served copy is public/hero-bg.mp4)
+/blue bg.mp4
