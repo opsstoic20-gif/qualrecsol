@@ -14,6 +14,17 @@ export type LiveMarket = {
 
 export const LIVE_MARKETS: LiveMarket[] = [
   {
+    slug: "usa",
+    code: "US",
+    name: "United States",
+    flag: "🇺🇸",
+    tagline: "Domestic US staffing — place vetted talent into US MNCs and growing teams.",
+    timezone: "ET–PT",
+    savings: "Market rate",
+    payroll: "Bi-weekly",
+    photo: "/countries/usa.webp",
+  },
+  {
     slug: "india",
     code: "IN",
     name: "India",
@@ -44,6 +55,14 @@ export const OPENING_MARKETS = [
   { quarter: "Q3 2026", flag: "🇦🇷", label: "Argentina · Buenos Aires" },
 ];
 
+// Physical offices / delivery hubs — surfaced on the Global page and home network panel.
+export const OFFICES = [
+  { flag: "🇺🇸", city: "Florida, USA", region: "United States", note: "Headquarters — St. Petersburg & Tampa" },
+  { flag: "🇮🇳", city: "Jaspur, Uttarakhand", region: "India", note: "Delivery & talent hub" },
+  { flag: "🇮🇳", city: "Banjara Hills, Hyderabad", region: "India", note: "Engineering & QA center" },
+  { flag: "🇲🇽", city: "Mérida, Yucatán", region: "Mexico", note: "Nearshore entity" },
+];
+
 export type CountryGuide = {
   slug: string;
   name: string;
@@ -59,6 +78,75 @@ export type CountryGuide = {
 };
 
 export const COUNTRIES: Record<string, CountryGuide> = {
+  usa: {
+    slug: "usa",
+    name: "the United States",
+    flag: "🇺🇸",
+    photo: "/countries/usa.webp",
+    lead: "We staff US enterprises domestically — placing vetted talent into US MNCs and growing teams, US-to-US. QualRec handles W-2, contract, and corp-to-corp engagements with compliant onboarding from our Florida headquarters.",
+    landscape: [
+      { label: "Engagement", value: "W-2 · C2C · 1099" },
+      { label: "Timezone", value: "ET–PT", sub: "UTC−5 to −8" },
+      { label: "Capital", value: "Washington, D.C." },
+      { label: "Currency", value: "US Dollar (USD)" },
+      { label: "Payroll", value: "Bi-weekly" },
+      { label: "Team", value: "St. Petersburg · Tampa, FL" },
+    ],
+    overview: {
+      body: "Most of our work is domestic: sourcing US-based professionals and placing them into US MNCs and growing companies. We employ on W-2, run corp-to-corp with vendor partners, and place direct-hire — all under US federal and state law, with E-Verify onboarding handled end to end.",
+      bullets: [
+        "Headquartered in St. Petersburg & Tampa, Florida",
+        "US-to-US placement into Fortune 500 and mid-market teams",
+        "W-2, corp-to-corp, and direct-hire engagement models",
+        "Nationwide reach across all 50 states",
+      ],
+      talents: ["Software engineering", "Cloud & DevOps", "Cybersecurity", "Data & AI", "Product & program management", "ERP & Salesforce"],
+    },
+    law: {
+      intro: "US employment is governed by overlapping federal and state law, and is employment-at-will in every state except Montana. We staff nationwide and stay current on each state's wage, tax, and leave rules.",
+      items: [
+        { h: "Minimum Wage", p: "Federal minimum is $7.25/hour, but many states and cities set higher floors (e.g. CA, WA, NY $16+). For technology roles we benchmark to market — well above any statutory minimum." },
+        { h: "Payroll Cycle", p: "Most commonly bi-weekly or semi-monthly. Each check withholds federal income tax, Social Security and Medicare (FICA), and applicable state/local income tax." },
+        { h: "Onboarding", p: "Typically 1–5 business days. We complete Form I-9 employment eligibility, Form W-4 withholding, E-Verify, and state new-hire reporting. Foreign nationals require work authorization (H-1B, OPT, green card) which we coordinate." },
+        { h: "Types of Leave", p: "No federal paid-leave mandate. FMLA provides 12 weeks of unpaid, job-protected leave at employers with 50+ staff. Market-standard packages include 10–20 days PTO plus sick leave; several states mandate paid sick time." },
+        { h: "Termination & Notice", p: "Employment is at-will — either party may end it without cause, absent a contract. No statutory severance federally; the WARN Act requires 60 days' notice for qualifying mass layoffs at large employers." },
+        { h: "Remote & Telework", p: "No single federal telework law. Remote hires create tax and registration nexus in the employee's state; we manage multi-state payroll, registration, and equipment stipends." },
+      ],
+    },
+    holidays: {
+      count: "11 federal holidays",
+      list: [
+        { when: "Jan 1", name: "New Year's Day" },
+        { when: "Jan", name: "Martin Luther King Jr. Day" },
+        { when: "Feb", name: "Presidents' Day" },
+        { when: "May", name: "Memorial Day" },
+        { when: "Jun 19", name: "Juneteenth" },
+        { when: "Jul 4", name: "Independence Day" },
+        { when: "Sep", name: "Labor Day" },
+        { when: "Nov", name: "Veterans & Thanksgiving" },
+        { when: "Dec 25", name: "Christmas Day" },
+      ],
+    },
+    benefits: [
+      { title: "Health Insurance", body: "ACA-compliant employer medical, with PPO/HMO plan options." },
+      { title: "401(k) Retirement", body: "Tax-advantaged 401(k) with a standard employer match." },
+      { title: "Dental & Vision", body: "Supplemental dental and vision coverage for employee and family." },
+      { title: "Paid Time Off", body: "Market-standard PTO, paid holidays, and sick leave." },
+      { title: "Life & Disability", body: "Group life plus short- and long-term disability cover." },
+      { title: "FSA / HSA", body: "Pre-tax flexible spending and health savings accounts." },
+    ],
+    facts: [
+      ["Capital", "Washington, D.C."],
+      ["Currency", "US Dollar"],
+      ["Languages", "English"],
+      ["Population", "335 million"],
+      ["Payroll frequency", "Bi-weekly"],
+      ["Income tax range", "10% – 37%"],
+      ["Working hours", "40 hrs/week (OT >40)"],
+      ["Employment basis", "At-will"],
+    ],
+  },
+
   india: {
     slug: "india",
     name: "India",

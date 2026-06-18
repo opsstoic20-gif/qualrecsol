@@ -69,7 +69,7 @@ const jsonLd = {
       logo: `${siteUrl}/logo-qualrec.png`,
       description:
         "US-based IT talent & solutions firm. Contract-to-Hire specialists sourcing vetted tech professionals globally and placing them with enterprises across the US, Canada, UK, and Europe.",
-      foundingDate: "2015",
+      foundingDate: "2019",
       sameAs: [SITE.social.linkedin, SITE.social.facebook],
       address: {
         "@type": "PostalAddress",

@@ -20,8 +20,8 @@ export const NAV_LINKS = [
     href: "/about",
     menu: [
       ["Our story", "/about#story"],
-      ["Leadership", "/about#leadership"],
       ["Core values", "/about#values"],
+      ["Careers", "/careers"],
     ] as [string, string][],
   },
   {

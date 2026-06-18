@@ -6,7 +6,7 @@ import { QR } from "@/components/ui";
 import { Reveal } from "@/components/ui/Reveal";
 import { Icons as I } from "@/components/icons";
 import { ROUTES } from "@/lib/nav";
-import { LIVE_MARKETS, OPENING_MARKETS } from "@/lib/content/countries";
+import { LIVE_MARKETS, OPENING_MARKETS, OFFICES } from "@/lib/content/countries";
 
 const el = React.createElement;
 const Head = QR.SectionHead;
@@ -54,9 +54,20 @@ export default function GlobalView() {
     el(Hero),
     el("section", { style: { background: "#fff", padding: "var(--section-py) 0" } },
       el("div", { style: { maxWidth: "var(--container-max)", margin: "0 auto", padding: "0 24px" } },
-        el(Head, { eyebrow: "Hire-ready today", title: "2 countries, hire-ready today.", lead: "Live entities with statutory benefits and full compliance — start hiring in days, not months." }),
-        el("div", { style: { marginTop: "52px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "28px" }, className: "qr-svc-grid" },
+        el(Head, { eyebrow: "Hire-ready today", title: "3 countries, hire-ready today.", lead: "Domestic US staffing plus live entities in India and Mexico — statutory benefits and full compliance, start hiring in days, not months." }),
+        el("div", { style: { marginTop: "52px", display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: "28px" }, className: "qr-svc-grid" },
           LIVE_MARKETS.map(LiveCard)))),
+
+    el("section", { style: { background: "var(--surface-2)", padding: "var(--section-py) 0" } },
+      el("div", { style: { maxWidth: "var(--container-max)", margin: "0 auto", padding: "0 24px" } },
+        el(Head, { eyebrow: "Where we operate", title: "Our offices & delivery hubs.", lead: "On-the-ground teams across the United States, India, and Mexico — not a remote-only outsourcer." }),
+        el("div", { style: { marginTop: "48px", display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: "20px" }, className: "qr-svc-grid" },
+          OFFICES.map((o, i) =>
+            el(Reveal, { key: i, delay: (i % 4) * 60, style: { background: "#fff", border: "1px solid var(--hairline)", borderRadius: "16px", padding: "26px 24px", boxShadow: "var(--shadow-sm)", display: "flex", flexDirection: "column", gap: "10px" } },
+              el("span", { style: { fontSize: "30px", lineHeight: 1 } }, o.flag),
+              el("div", { style: { fontFamily: "var(--font-display)", fontWeight: 700, fontSize: "18px", color: "var(--ink)", marginTop: "4px" } }, o.city),
+              el("div", { style: { fontSize: "13px", fontWeight: 600, letterSpacing: ".04em", textTransform: "uppercase", color: "var(--brand)" } }, o.region),
+              el("div", { style: { fontSize: "13.5px", color: "var(--muted)", lineHeight: 1.5 } }, o.note)))))),
 
     el("section", { style: { background: "var(--surface-2)", padding: "var(--section-py) 0" } },
       el("div", { style: { maxWidth: "var(--container-max)", margin: "0 auto", padding: "0 24px" } },

@@ -339,7 +339,7 @@ export function Pipeline({ stages = DEFAULT_STAGES, variant = "feature", tone = 
               <div key={label} style={{ display: "flex", flexDirection: "column", alignItems: i === 0 ? "flex-start" : i === count - 1 ? "flex-end" : "center", gap: isDivider ? 0 : "10px" }}>
                 <span style={{ width: isDivider ? "7px" : "12px", height: isDivider ? "7px" : "12px", borderRadius: "50%", background: lit ? nodeOn : nodeOff, boxShadow: lit && !isDivider ? (isDark ? "0 0 0 4px rgba(255,255,255,0.18)" : "0 0 0 4px rgba(29,78,216,0.14)") : "none", transition: "background 300ms var(--ease-out), box-shadow 300ms var(--ease-out)", transitionDelay: delay }} />
                 {!isDivider && (
-                  <span style={{ fontFamily: "var(--font-body)", fontSize: "13px", fontWeight: 600, color: lit ? (isDark ? "#fff" : "var(--ink)") : labelColor, letterSpacing: "0.01em", whiteSpace: "nowrap", transition: "color 300ms var(--ease-out)", transitionDelay: delay }}>{label}</span>
+                  <span className="qr-pl-label" style={{ fontFamily: "var(--font-body)", fontSize: "13px", fontWeight: 600, color: lit ? (isDark ? "#fff" : "var(--ink)") : labelColor, letterSpacing: "0.01em", whiteSpace: "nowrap", textAlign: "center", transition: "color 300ms var(--ease-out)", transitionDelay: delay }}>{label}</span>
                 )}
               </div>
             );

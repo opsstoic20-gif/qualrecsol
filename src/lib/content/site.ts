@@ -5,7 +5,7 @@ export const SITE = {
   heroHeadline: "Talent that fits. Hires that stick.",
   positioning:
     "Contract-to-hire and direct placement of vetted tech talent, sourced globally for enterprises across the United States.",
-  founded: "2015",
+  founded: "2019",
   email: "info@qualrecsol.com",
   careersEmail: "career@qualrecsol.com",
   phoneUsa: "+1 305-340-6376",

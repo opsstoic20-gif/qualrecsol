@@ -285,9 +285,9 @@ export default function HomeView() {
         el("div", null,
           el(Reveal, null, el(QR.Eyebrow, null, "Global Workforce")),
           el(Reveal, { delay: 60, as: "h2", style: { marginTop: "14px" } }, "Hire anywhere. We handle the rest."),
-          el(Reveal, { delay: 120, as: "p", style: { marginTop: "16px", fontSize: "var(--fs-lead)", color: "var(--body)", lineHeight: 1.55 } }, "We source and place vetted talent across borders — and as your employer of record we own payroll, benefits, and compliance in-country. India and Mexico are hire-ready today, with four more markets opening through 2026."),
+          el(Reveal, { delay: 120, as: "p", style: { marginTop: "16px", fontSize: "var(--fs-lead)", color: "var(--body)", lineHeight: 1.55 } }, "We place vetted talent across borders — and US-to-US, staffing American MNCs directly. As your employer of record we own payroll, benefits, and compliance in-country. The US, India, and Mexico are hire-ready today, with four more markets opening through 2026."),
           el("div", { style: { marginTop: "28px", display: "flex", gap: "36px", flexWrap: "wrap" } },
-            [["2", "Countries hire-ready"], ["4", "Markets opening 2026"], ["48h", "To a compliant offer"]].map(([n, l], i) =>
+            [["3", "Countries hire-ready"], ["4", "Markets opening 2026"], ["48h", "To a compliant offer"]].map(([n, l], i) =>
               el(Reveal, { key: i, delay: 60 * i },
                 el("div", { style: { fontFamily: "var(--font-display)", fontWeight: 800, fontSize: "32px", color: "var(--brand)", lineHeight: 1, letterSpacing: "-0.02em" } }, n),
                 el("div", { style: { marginTop: "6px", fontSize: "13px", color: "var(--muted)" } }, l)))),
@@ -297,8 +297,8 @@ export default function HomeView() {
         el(Reveal, { delay: 120, style: { background: "#fff", border: "1px solid var(--hairline)", borderRadius: "20px", boxShadow: "var(--shadow-md)", padding: "12px" } },
           el("div", { style: { padding: "16px 18px 8px", display: "flex", alignItems: "center", justifyContent: "space-between" } },
             el("span", { style: { fontFamily: "var(--font-body)", fontSize: "12px", fontWeight: 600, letterSpacing: ".12em", textTransform: "uppercase", color: "var(--muted)" } }, "Talent network"),
-            el(QR.Badge, { tone: "success" }, "2 live")),
-          [["🇺🇸", "United States", "Delivery & client HQ", "Hub"], ["🇮🇳", "India", "Primary talent pipeline", "Live"], ["🇲🇽", "Mexico", "Nearshore · US time zones", "Live"], ["🇧🇷", "Brazil", "São Paulo", "2026"], ["🇦🇷", "Argentina", "Buenos Aires", "2026"]].map((r, i) =>
+            el(QR.Badge, { tone: "success" }, "3 live")),
+          [["🇺🇸", "United States", "Florida — HQ (US-to-US staffing)", "Live"], ["🇮🇳", "India", "Jaspur · Banjara Hills, Hyderabad", "Live"], ["🇲🇽", "Mexico", "Mérida, Yucatán", "Live"], ["🇧🇷", "Brazil", "São Paulo", "2026"], ["🇦🇷", "Argentina", "Buenos Aires", "2026"]].map((r, i) =>
             el("div", { key: i, style: { display: "flex", alignItems: "center", gap: "14px", padding: "14px 16px", borderRadius: "14px", background: i % 2 ? "transparent" : "var(--surface-2)" } },
               el("span", { style: { fontSize: "26px", lineHeight: 1 } }, r[0]),
               el("div", { style: { flex: 1, minWidth: 0 } },
