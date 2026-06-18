@@ -30,7 +30,7 @@ export default function Sidebar({ email }) {
   return el("aside", { style: { width: "248px", flex: "0 0 auto", background: "var(--brand-ink)", color: "#fff", display: "flex", flexDirection: "column", position: "sticky", top: 0, height: "100vh" } },
     el("div", { style: { padding: "22px 22px 18px", borderBottom: "1px solid rgba(255,255,255,0.1)" } },
       /* eslint-disable-next-line @next/next/no-img-element */
-      el("img", { src: "/logo-qualrec.png", alt: "Qualrec", style: { height: "34px", filter: "brightness(0) invert(1)" } }),
+      el("img", { src: "/logo-qualrec.png", alt: "Qualrec", style: { height: "34px", width: "auto" } }),
       el("div", { style: { marginTop: "8px", fontSize: "11px", letterSpacing: ".14em", textTransform: "uppercase", color: "rgba(255,255,255,0.5)", fontWeight: 600 } }, "Admin panel")),
     el("nav", { style: { padding: "16px 12px", display: "flex", flexDirection: "column", gap: "4px", flex: 1 } },
       NAV.map((n) => el(Link, { key: n.href, href: n.href,

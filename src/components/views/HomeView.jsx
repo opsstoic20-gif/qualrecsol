@@ -76,7 +76,7 @@ export default function HomeView() {
       el("div", { className: "qr-aurora-b", "aria-hidden": "true", style: { position: "absolute", bottom: "-45%", right: "-12%", width: "62%", height: "160%", background: "radial-gradient(circle at center, rgba(14,116,144,0.5), transparent 60%)", filter: "blur(60px)", zIndex: 1, pointerEvents: "none" } }),
       el("div", { className: "qr-grid", "aria-hidden": "true", style: { position: "absolute", inset: 0, zIndex: 1, backgroundImage: "linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)", backgroundSize: "64px 64px", maskImage: "radial-gradient(circle at 75% 5%, #000, transparent 72%)", WebkitMaskImage: "radial-gradient(circle at 75% 5%, #000, transparent 72%)", pointerEvents: "none" } }),
       el("div", { "aria-hidden": "true", style: { position: "absolute", inset: 0, zIndex: 1, background: "linear-gradient(115deg, rgba(7,18,48,0.78) 0%, rgba(7,18,48,0.30) 58%, rgba(7,18,48,0.12) 100%), linear-gradient(180deg, transparent 60%, rgba(7,18,48,0.55) 100%)", pointerEvents: "none" } }),
-      el("div", { style: { maxWidth: "var(--container-max)", margin: "0 auto", padding: "118px 24px 140px", position: "relative", zIndex: 2 } },
+      el("div", { className: "qr-hero-pad", style: { maxWidth: "var(--container-max)", margin: "0 auto", padding: "118px 24px 140px", position: "relative", zIndex: 2 } },
         el("div", { style: { maxWidth: "760px" } },
           el("div", { className: "qr-rise", style: { animationDelay: "0ms" } }, el(QR.Eyebrow, { tone: "onDark" }, "IT Talent & Solutions")),
           el("h1", { className: "qr-rise", style: { animationDelay: "80ms", marginTop: "20px", color: "#fff", maxWidth: "13ch" } },

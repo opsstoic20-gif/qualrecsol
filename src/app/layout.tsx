@@ -17,7 +17,7 @@ const inter = Inter({
   display: "swap",
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://qualrec-solutions.vercel.app";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://qualrecsol.vercel.app";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

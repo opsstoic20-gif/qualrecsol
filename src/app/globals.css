@@ -212,6 +212,13 @@ img, video { display: block; max-width: 100%; }
   .qr-svc-grid, .qr-tst-grid, .qr-exp-grid { grid-template-columns: 1fr !important; }
   .qr-model-row { grid-template-columns: 1fr !important; }
   .qr-model-points { min-width: 0 !important; }
+  .qr-proc-grid { grid-template-columns: 1fr 1fr !important; }
+}
+
+/* Tighter rhythm + hero on phones */
+@media (max-width: 640px) {
+  :root { --section-py: 60px; }
+  .qr-hero-pad { padding-top: 84px !important; padding-bottom: 96px !important; }
 }
 
 /* ---------- Reduced motion ---------- */

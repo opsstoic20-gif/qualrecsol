@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const base = process.env.NEXT_PUBLIC_SITE_URL || "https://qualrec-solutions.vercel.app";
+  const base = process.env.NEXT_PUBLIC_SITE_URL || "https://qualrecsol.vercel.app";
   const routes = ["", "/about", "/services", "/industries", "/case-studies", "/careers", "/contact", "/privacy", "/terms"];
   const now = new Date();
   return routes.map((r) => ({

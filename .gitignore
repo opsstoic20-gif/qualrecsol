@@ -47,3 +47,6 @@ next-env.d.ts
 /pexels-photo-*.jpg
 /security-protection-anti-virus-software-*.jpg
 /SWWC-Agency-Admin_Exterior-*.png
+
+# raw source photos (processed copies live in public/team)
+/company people/

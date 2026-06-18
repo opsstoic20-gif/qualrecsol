@@ -41,7 +41,7 @@ function Avatar({ slug, name, founder }) {
   const [failed, setFailed] = React.useState(false);
   const initials = name.split(" ").map((w) => w[0]).slice(0, 2).join("");
   return el("div", { style: { position: "relative", aspectRatio: "1 / 1", borderRadius: "14px", overflow: "hidden", background: "var(--tint)" } },
-    !failed && /* eslint-disable-next-line @next/next/no-img-element */ el("img", { src: "/team/" + slug + ".png", alt: name, onError: () => setFailed(true), style: { width: "100%", height: "100%", objectFit: "cover", display: "block" } }),
+    !failed && /* eslint-disable-next-line @next/next/no-img-element */ el("img", { src: "/team/" + slug + ".jpg", alt: name, loading: "lazy", onError: () => setFailed(true), style: { width: "100%", height: "100%", objectFit: "cover", display: "block" } }),
     failed && el("div", { style: { position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center", background: "linear-gradient(135deg, #E7EFFE, #EFF6FF)" } },
       el("span", { style: { fontFamily: "var(--font-display)", fontWeight: 800, fontSize: "38px", color: "var(--brand)", letterSpacing: "-0.02em" } }, initials)),
     founder && el("span", { style: { position: "absolute", top: "12px", left: "12px", background: "var(--brand)", color: "#fff", fontSize: "11px", fontWeight: 700, letterSpacing: ".06em", textTransform: "uppercase", padding: "5px 10px", borderRadius: "999px" } }, "Founder"));

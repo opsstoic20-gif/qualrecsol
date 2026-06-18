@@ -71,7 +71,7 @@ export default function Navbar() {
       <div style={{ maxWidth: "var(--container-max)", margin: "0 auto", padding: "0 24px", height: "68px", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "20px" }}>
         <Link href="/" style={{ display: "flex", alignItems: "center" }} aria-label="Qualrec Solutions — home">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/logo-qualrec.png" alt="Qualrec Solutions" style={{ height: "40px", display: "block" }} width="146" height="40" />
+          <img src="/logo-qualrec.png" alt="Qualrec Solutions" style={{ height: "38px", width: "auto", display: "block" }} width="97" height="38" />
         </Link>
         <nav className="qr-nav-links" style={{ display: "flex", alignItems: "center", gap: "22px" }}>
           {NAV_LINKS.map((l) => <NavLink key={l.id} link={l} active={isActive(l.href)} />)}
@@ -92,7 +92,7 @@ export default function Navbar() {
         <div style={{ position: "fixed", inset: 0, zIndex: 100, background: "#fff", padding: "24px", display: "flex", flexDirection: "column" }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "32px" }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/logo-qualrec.png" alt="Qualrec" style={{ height: "38px" }} width="139" height="38" />
+            <img src="/logo-qualrec.png" alt="Qualrec" style={{ height: "36px", width: "auto" }} width="92" height="36" />
             <button onClick={() => setMobile(false)} aria-label="Close menu" style={{ background: "none", border: "none", cursor: "pointer", color: "var(--ink)" }}><X size={28} /></button>
           </div>
           <nav style={{ display: "flex", flexDirection: "column", gap: "4px" }}>

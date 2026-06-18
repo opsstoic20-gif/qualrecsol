@@ -35,7 +35,7 @@ export default function Footer() {
         <div className="qr-foot-grid" style={{ display: "grid", gridTemplateColumns: "1.6fr 1fr 1fr", gap: "48px" }}>
           <div style={{ display: "flex", flexDirection: "column", gap: "20px", maxWidth: "360px" }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/logo-qualrec.png" alt="Qualrec Solutions" style={{ height: "44px", alignSelf: "flex-start", filter: "brightness(0) invert(1)" }} width="160" height="44" />
+            <img src="/logo-qualrec.png" alt="Qualrec Solutions" style={{ height: "46px", width: "auto", alignSelf: "flex-start" }} width="118" height="46" />
             <p style={{ margin: 0, fontFamily: "var(--font-body)", fontSize: "14.5px", lineHeight: 1.65, color: "rgba(255,255,255,0.65)" }}>{SITE.positioning}</p>
             <div style={{ display: "flex", gap: "10px" }}>
               {[[Linkedin, SITE.social.linkedin, "LinkedIn"], [Facebook, SITE.social.facebook, "Facebook"]].map(([Ic, href, label], i) => (
