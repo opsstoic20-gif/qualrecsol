@@ -24,9 +24,19 @@ const JOURNEY = [
   { year: "2025–26", title: "Global & Domestic Reach", body: "Today Qualrec hires across borders and US-to-US — placing talent into US MNCs and jobs as well as sourcing globally from India and Mexico, serving Fortune 500 and growing enterprises." },
 ];
 
+// Shared subtle video backdrop for the dark brand bands — low opacity + dark veil
+// so the motion reads as a quiet texture, never competing with the copy.
+function BandVideo({ veil = "linear-gradient(180deg, rgba(14,27,51,0.80) 0%, rgba(14,27,51,0.66) 100%)" }) {
+  return el(React.Fragment, null,
+    el("video", { autoPlay: true, muted: true, loop: true, playsInline: true, preload: "auto", "aria-hidden": "true", style: { position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", zIndex: 0, opacity: 0.2 } },
+      el("source", { src: "/hero-bg.mp4", type: "video/mp4" })),
+    el("div", { "aria-hidden": "true", style: { position: "absolute", inset: 0, zIndex: 1, background: veil, pointerEvents: "none" } }));
+}
+
 function PageHero({ title, lead }) {
-  return el("section", { style: { background: "var(--gradient-brand)" } },
-    el("div", { style: { maxWidth: "var(--container-max)", margin: "0 auto", padding: "84px 24px 88px", textAlign: "center" } },
+  return el("section", { style: { position: "relative", overflow: "hidden", background: "var(--gradient-brand)" } },
+    el(BandVideo, null),
+    el("div", { style: { position: "relative", zIndex: 2, maxWidth: "var(--container-max)", margin: "0 auto", padding: "84px 24px 88px", textAlign: "center" } },
       el(Reveal, { as: "h1", style: { color: "#fff", maxWidth: "20ch", margin: "0 auto" } }, title),
       el(Reveal, { delay: 80, as: "p", style: { marginTop: "20px", fontSize: "var(--fs-lead)", color: "rgba(255,255,255,0.82)", maxWidth: "62ch", marginInline: "auto", lineHeight: 1.55 } }, lead)));
 }
@@ -71,10 +81,12 @@ export default function AboutView() {
               el("span", { style: { position: "absolute", left: "50%", top: "26px", width: "13px", height: "13px", borderRadius: "50%", background: "var(--brand-bright)", border: "3px solid var(--brand-ink)", transform: "translateX(-50%)", boxShadow: "0 0 0 4px rgba(37,99,235,0.25)" }, className: "qr-tl-node" })))))),
 
     // CTA
-    el("section", { style: { background: "var(--gradient-brand)", padding: "84px 0" } },
-      el("div", { style: { maxWidth: "var(--container-max)", margin: "0 auto", padding: "0 24px", textAlign: "center" } },
-        el(Reveal, { as: "h2", style: { color: "#fff" } }, "Want to work with us?"),
-        el(Reveal, { delay: 80, style: { marginTop: "28px", display: "flex", gap: "14px", justifyContent: "center", flexWrap: "wrap" } },
+    el("section", { style: { position: "relative", overflow: "hidden", background: "var(--gradient-brand)", padding: "84px 0" } },
+      el(BandVideo, { veil: "linear-gradient(180deg, rgba(14,27,51,0.78) 0%, rgba(14,27,51,0.70) 100%)" }),
+      el("div", { style: { position: "relative", zIndex: 2, maxWidth: "var(--container-max)", margin: "0 auto", padding: "0 24px", textAlign: "center" } },
+        el(Reveal, { as: "h2", style: { color: "#fff", maxWidth: "20ch", margin: "0 auto" } }, "Want to work with us?"),
+        el(Reveal, { delay: 70, as: "p", style: { marginTop: "18px", fontSize: "var(--fs-lead)", color: "rgba(255,255,255,0.84)", maxWidth: "58ch", marginInline: "auto", lineHeight: 1.55 } }, "Hiring a team or chasing your next role — either way, we move fast. Vetted talent in days, compliant placement across the US, India, and Mexico, and a partner who stays in it for the long run. Tell us what you need; we'll take it from there."),
+        el(Reveal, { delay: 130, style: { marginTop: "30px", display: "flex", gap: "14px", justifyContent: "center", flexWrap: "wrap" } },
           el(QR.Button, { variant: "secondary", size: "lg", onClick: () => onNavigate("contact"), iconRight: el(I.ArrowRight, { size: 18 }) }, "Get in touch"),
           el(QR.Button, { variant: "ghost", size: "lg", onClick: () => onNavigate("careers") }, "View careers")))));
 }

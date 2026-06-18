@@ -267,12 +267,9 @@ img, video { display: block; max-width: 100%; }
   100% { transform: scale(2.6); opacity: 0; }
 }
 @keyframes qrSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-@keyframes qrGlobeSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 @media (prefers-reduced-motion: no-preference) {
   .qr-arc { animation: qrArcDraw 6.5s ease-in-out infinite; }
   .qr-ping { transform-box: fill-box; transform-origin: center; animation: qrPing 3.4s ease-out infinite; }
-  /* Whole-globe spin — rotate the graticule about the sphere centre (viewBox coords). */
-  .qr-globe-spin { transform-box: view-box; transform-origin: 500px 500px; animation: qrGlobeSpin 60s linear infinite; }
 }
 
 /* ---------- Reduced motion ---------- */

@@ -95,7 +95,7 @@ export default function HomeView() {
             [[I.Shield, "Vetted talent"], [I.Check, "Trusted partner"], [I.Globe, "Global delivery"]].map(([Ic, label], i) =>
               el("span", { key: i, style: { display: "inline-flex", alignItems: "center", gap: "9px", fontFamily: "var(--font-body)", fontSize: "14.5px", fontWeight: 600, color: "var(--ink)" } },
                 el("span", { style: { color: "var(--brand)", display: "inline-flex" } }, el(Ic, { size: 18 })), label)))),
-        el("div", { className: "qr-hero-globe", style: { position: "relative", display: "flex", justifyContent: "center" } },
+        el("div", { className: "qr-hero-globe qr-float", style: { position: "relative", display: "flex", justifyContent: "center" } },
           el(Globe, { style: { maxWidth: "540px" } }))));
   }
 

@@ -47,11 +47,10 @@ export default function Globe({ className = "", style = {} }) {
       el("circle", { cx: C.x, cy: C.y, r: C.r, fill: "url(#qrSphere)" }),
       el("circle", { cx: C.x, cy: C.y, r: C.r, fill: "none", stroke: "rgba(46,99,230,0.28)", strokeWidth: 1.5 }),
 
-      // Graticule (clipped to sphere) — slowly rotates so the whole globe feels alive.
-      el("g", { clipPath: "url(#qrClip)" },
-        el("g", { className: "qr-globe-spin", fill: "none", stroke: LINE, strokeWidth: 1 },
-          meridians.map((rx, i) => el("ellipse", { key: "m" + i, cx: C.x, cy: C.y, rx, ry: C.r })),
-          parallels.map((p, i) => el("ellipse", { key: "p" + i, cx: C.x, cy: p.cy, rx: p.rx, ry: Math.max(10, p.rx * 0.16) })))),
+      // Graticule (clipped to sphere)
+      el("g", { clipPath: "url(#qrClip)", fill: "none", stroke: LINE, strokeWidth: 1 },
+        meridians.map((rx, i) => el("ellipse", { key: "m" + i, cx: C.x, cy: C.y, rx, ry: C.r })),
+        parallels.map((p, i) => el("ellipse", { key: "p" + i, cx: C.x, cy: p.cy, rx: p.rx, ry: Math.max(10, p.rx * 0.16) }))),
 
       // Connection arcs (draw from US hub)
       el("g", { fill: "none", stroke: BRAND, strokeWidth: 2.4, strokeLinecap: "round", clipPath: "url(#qrClip)" },
