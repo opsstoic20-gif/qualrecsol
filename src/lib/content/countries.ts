@@ -57,7 +57,7 @@ export const OPENING_MARKETS = [
 
 // Physical offices / delivery hubs — surfaced on the Global page and home network panel.
 export const OFFICES = [
-  { flag: "🇺🇸", city: "Florida, USA", region: "United States", note: "Headquarters — St. Petersburg & Tampa" },
+  { flag: "🇺🇸", city: "Florida, USA", region: "United States", note: "Headquarters — St. Petersburg, FL" },
   { flag: "🇮🇳", city: "Jaspur, Uttarakhand", region: "India", note: "Delivery & talent hub" },
   { flag: "🇮🇳", city: "Banjara Hills, Hyderabad", region: "India", note: "Engineering & QA center" },
   { flag: "🇲🇽", city: "Mérida, Yucatán", region: "Mexico", note: "Nearshore entity" },
@@ -90,12 +90,12 @@ export const COUNTRIES: Record<string, CountryGuide> = {
       { label: "Capital", value: "Washington, D.C." },
       { label: "Currency", value: "US Dollar (USD)" },
       { label: "Payroll", value: "Bi-weekly" },
-      { label: "Team", value: "St. Petersburg · Tampa, FL" },
+      { label: "Team", value: "St. Petersburg, FL" },
     ],
     overview: {
       body: "Most of our work is domestic: sourcing US-based professionals and placing them into US MNCs and growing companies. We employ on W-2, run corp-to-corp with vendor partners, and place direct-hire — all under US federal and state law, with E-Verify onboarding handled end to end.",
       bullets: [
-        "Headquartered in St. Petersburg & Tampa, Florida",
+        "Headquartered in St. Petersburg, Florida",
         "US-to-US placement into Fortune 500 and mid-market teams",
         "W-2, corp-to-corp, and direct-hire engagement models",
         "Nationwide reach across all 50 states",
