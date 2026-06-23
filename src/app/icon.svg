@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Q">
+  <defs>
+    <linearGradient id="qg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3A66E8"/>
+      <stop offset="1" stop-color="#102A6E"/>
+    </linearGradient>
+  </defs>
+  <!-- Q ring -->
+  <circle cx="246" cy="232" r="150" fill="none" stroke="url(#qg)" stroke-width="76"/>
+  <!-- Q tail -->
+  <line x1="296" y1="318" x2="404" y2="446" stroke="url(#qg)" stroke-width="78" stroke-linecap="round"/>
+</svg>

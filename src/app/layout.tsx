@@ -54,7 +54,13 @@ export const metadata: Metadata = {
       "Contract-to-Hire specialists placing vetted tech talent with enterprises across the US, Canada, UK, and Europe.",
     images: ["/og-default.png"],
   },
-  icons: { icon: "/logo-qualrec.png" },
+  icons: {
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico", sizes: "any" },
+    ],
+    apple: { url: "/apple-icon.png" },
+  },
   robots: { index: true, follow: true },
 };
 
