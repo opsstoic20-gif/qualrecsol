@@ -14,10 +14,10 @@ const slug = (s) => s.toLowerCase().replace(/&/g, "").replace(/[^a-z0-9]+/g, "-"
 
 // PLACEHOLDER — industry statistics are illustrative; replace with verified numbers before real-domain launch.
 const INDUSTRIES = [
-  { icon: I.HeartPulse, name: "Healthcare", body: "HIPAA-compliant solutions for hospitals, clinics, and providers.", stats: [["50+", "Clients"], ["200+", "Projects"], ["99%", "Satisfaction"]], specs: ["EHR Systems", "Telemedicine", "Medical Imaging", "Compliance"] },
-  { icon: I.Landmark, name: "Financial Services", body: "Secure, scalable solutions for banks, fintech, and institutions.", stats: [["40+", "Clients"], ["150+", "Projects"], ["98%", "Satisfaction"]], specs: ["Digital Banking", "Payment Systems", "Risk Management", "Blockchain"] },
+  { icon: I.HeartPulse, name: "Healthcare", body: "HIPAA-compliant solutions for hospitals, clinics, and providers.", stats: [["50+", "Clients"], ["200+", "Projects"], ["99%", "Satisfaction"]], specs: ["EHR Systems", "Medical Imaging", "Compliance"] },
+  { icon: I.Landmark, name: "Financial Services", body: "Secure, scalable solutions for banks, fintech, and institutions.", stats: [["40+", "Clients"], ["150+", "Projects"], ["98%", "Satisfaction"]], specs: ["Digital Banking", "Risk Management"] },
   { icon: I.Factory, name: "Manufacturing", body: "Industry 4.0 solutions for smart manufacturing and supply chain.", stats: [["35+", "Clients"], ["120+", "Projects"], ["97%", "Satisfaction"]], specs: ["IoT Integration", "Predictive Maintenance", "Supply Chain", "Quality Control"] },
-  { icon: I.ShoppingCart, name: "Retail & E-commerce", body: "Omnichannel solutions for modern retail and e-commerce.", stats: [["60+", "Clients"], ["300+", "Projects"], ["96%", "Satisfaction"]], specs: ["E-commerce Platforms", "POS Systems", "Inventory", "Customer Analytics"] },
+  { icon: I.ShoppingCart, name: "Retail & E-commerce", body: "Omnichannel solutions for modern retail and e-commerce.", stats: [["60+", "Clients"], ["300+", "Projects"], ["96%", "Satisfaction"]], specs: ["E-commerce Platforms", "Inventory", "Customer Analytics"] },
   { icon: I.Landmark, name: "Government & Public Sector", body: "Secure, compliant solutions for agencies and public organizations.", stats: [["25+", "Clients"], ["80+", "Projects"], ["99%", "Satisfaction"]], specs: ["Citizen Services", "Data Management", "Cybersecurity", "Compliance"] },
 ];
 

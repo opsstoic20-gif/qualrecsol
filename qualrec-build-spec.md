@@ -67,17 +67,17 @@ Application Development · Cloud Services · Data & Analytics / AI · Cybersecur
 3. **Cybersecurity** — SOC analysts & threat hunters; Pen testing & ethical hacking; IAM; Cloud security engineering; GRC; Incident response & forensics.
 4. **Data, Analytics & AI** — Data engineering (ETL, Big Data, Snowflake, Databricks); Data science & ML; AI & GenAI (OpenAI, LangChain, LLaMA, RAG); BI (Power BI, Tableau, Looker, Qlik); Data governance & MDM; Predictive & prescriptive analytics.
 5. **Enterprise Applications** — ERP (SAP S/4HANA, Oracle ERP Cloud, Dynamics 365, Workday); CRM (Salesforce, HubSpot, Dynamics CRM); HRIS & Payroll (Workday, ADP, UKG); ITSM & ServiceNow; E-commerce (Shopify, Magento, SF Commerce Cloud).
-6. **Emerging Technologies** — Blockchain (Ethereum, Hyperledger, Solana); Web3 & dApps; AR/VR/MR (Unity, Unreal); Digital Twins; Quantum (Qiskit, AWS Braket).
+6. **Emerging Technologies** — Web3 & dApps; AR/VR/MR (Unity, Unreal); Digital Twins; Quantum (Qiskit, AWS Braket).
 7. **Networking & IT Infrastructure** — Network engineering (Cisco, Juniper, Palo Alto); Wireless & 5G; Infra support (Windows, Linux, Unix); IT asset management.
 8. **Product & Project Management** — Agile (Scrum Masters, Product Owners); Scaled Agile (SAFe); Business analysis & product strategy; Technical program management.
 9. **Quality Assurance & Testing** — Automation (Selenium, Cypress, Playwright); Performance (JMeter, LoadRunner); Security testing; Continuous testing in DevOps.
 10. **Specialized Functional IT Roles** — RegTech & FinTech; HealthTech (EMR/EHR, Epic, Cerner); MarTech (Adobe Experience Manager, Marketo); IoT engineers; Embedded systems.
 
 ### `industries.ts` — 5 verticals *(stats illustrative — flag)*
-- **Healthcare** — HIPAA-compliant solutions. `50+ Clients · 200+ Projects · 99% Satisfaction`. Specializations: EHR Systems, Telemedicine, Medical Imaging, Compliance. Challenges: data security & privacy, regulatory compliance, system integration, patient experience.
-- **Financial Services** — secure, scalable for banks/fintech. `40+ · 150+ · 98%`. Digital Banking, Payment Systems, Risk Management, Blockchain. Challenges: regulatory compliance, cybersecurity, legacy modernization, customer experience.
+- **Healthcare** — HIPAA-compliant solutions. `50+ Clients · 200+ Projects · 99% Satisfaction`. Specializations: EHR Systems, Medical Imaging, Compliance. Challenges: data security & privacy, regulatory compliance, system integration, patient experience.
+- **Financial Services** — secure, scalable for banks/fintech. `40+ · 150+ · 98%`. Digital Banking, Risk Management. Challenges: regulatory compliance, cybersecurity, legacy modernization, customer experience.
 - **Manufacturing** — Industry 4.0 & supply chain. `35+ · 120+ · 97%`. IoT Integration, Predictive Maintenance, Supply Chain, Quality Control. Challenges: digital transformation, equipment integration, real-time monitoring, cost optimization.
-- **Retail & E-commerce** — omnichannel. `60+ · 300+ · 96%`. E-commerce Platforms, POS, Inventory Management, Customer Analytics. Challenges: omnichannel integration, personalization, inventory optimization, mobile commerce.
+- **Retail & E-commerce** — omnichannel. `60+ · 300+ · 96%`. E-commerce Platforms, Inventory Management, Customer Analytics. Challenges: omnichannel integration, personalization, inventory optimization, mobile commerce.
 - **Government & Public Sector** — secure, compliant. `25+ · 80+ · 99%`. Citizen Services, Data Management, Cybersecurity, Compliance. Challenges: budget constraints, legacy modernization, security requirements, citizen engagement.
 
 ### `team.ts` — leadership (real; photos in `/public/team/`)
